@@ -1,0 +1,22 @@
+{
+  "products": [
+    { "id": 1, "name": "iPhone 13", "price": 1000, "brand": "Apple" },
+    { "id": 2, "name": "Galaxy S22", "price": 950, "brand": "Samsung" }
+  ],
+  "categories": [
+    { "id": 1, "name": "Điện thoại" },
+    { "id": 2, "name": "Laptop" }
+  ],
+  "users": [
+    { "id": 1, "name": "Nguyễn Văn A", "email": "a@gmail.com" },
+    { "id": 2, "name": "Trần Thị B", "email": "b@gmail.com" }
+  ],
+  "brands": [
+    { "id": 1, "name": "Apple" },
+    { "id": 2, "name": "Samsung" }
+  ],
+  "orders": [
+    { "id": 1, "user": "Nguyễn Văn A", "total": 1950 },
+    { "id": 2, "user": "Trần Thị B", "total": 1000 }
+  ]
+}

@@ -1,30 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Table, Typography, Image } from "antd";
+
+const { Title } = Typography;
 
 const ProductList = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  const columns = [
+    { title: "Tên sản phẩm", dataIndex: "name", key: "name" },
+    {
+      title: "Giá",
+      dataIndex: "price",
+      key: "price",
+      render: (price) => `${price.toLocaleString()}đ`,
+    },
+    {
+      title: "Hình ảnh",
+      dataIndex: "thumbnail",
+      key: "thumbnail",
+      render: (img) => <Image src={img} width={60} />,
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "description",
+      key: "description",
+      ellipsis: true,
+    },
+  ];
+
   return (
-    <div className="card">
-      <h2>📦 Danh sách sản phẩm</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Tên sản phẩm</th>
-            <th>Giá</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Chậu hoa hồng</td>
-            <td>120.000đ</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Cây sen đá</td>
-            <td>75.000đ</td>
-          </tr>
-        </tbody>
-      </table>
+    <div style={{ padding: 40 }}>
+      <Title level={3}>🛍️ Danh sách sản phẩm</Title>
+      <Table
+        rowKey="id"
+        columns={columns}
+        dataSource={products}
+        bordered
+        pagination={{ pageSize: 5 }}
+      />
     </div>
   );
 };
