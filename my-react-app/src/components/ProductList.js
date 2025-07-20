@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { Table, Typography, Image } from "antd";
 
 const { Title } = Typography;
+const fetchProducts = async () => {
+  const res = await axios.get("http://localhost:3000/products");
+  return res.data;
+};
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  });
 
   const columns = [
     { title: "Tên sản phẩm", dataIndex: "name", key: "name" },
@@ -33,6 +39,8 @@ const ProductList = () => {
       ellipsis: true,
     },
   ];
+  if (isLoading) return <p>Đang tải sản phẩm...</p>;
+  if (isError) return <p>Lỗi tải dữ liệu sản phẩm!</p>;
 
   return (
     <div style={{ padding: 40 }}>

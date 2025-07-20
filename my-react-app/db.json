@@ -1,22 +1,59 @@
 {
   "products": [
-    { "id": 1, "name": "iPhone 13", "price": 1000, "brand": "Apple" },
-    { "id": 2, "name": "Galaxy S22", "price": 950, "brand": "Samsung" }
+    {
+      "id": 1,
+      "name": "iPhone 13",
+      "price": 22000000,
+      "brand_id": 1,
+      "category_id": 1,
+      "description": "Điện thoại Apple iPhone 13 128GB chính hãng, màn hình Super Retina XDR.",
+      "thumbnail": "https://via.placeholder.com/100x100.png?text=iPhone13"
+    },
+    {
+      "id": 2,
+      "name": "Galaxy S22",
+      "price": 20000000,
+      "brand_id": 2,
+      "category_id": 1,
+      "description": "Samsung Galaxy S22 128GB - thiết kế cao cấp, camera sắc nét.",
+      "thumbnail": "https://via.placeholder.com/100x100.png?text=S22"
+    },
+    {
+      "id": 3,
+      "name": "MacBook Air M2",
+      "price": 28000000,
+      "brand_id": 1,
+      "category_id": 2,
+      "description": "Laptop Apple MacBook Air M2 2022 hiệu năng vượt trội.",
+      "thumbnail": "https://via.placeholder.com/100x100.png?text=MacBook"
+    }
   ],
   "categories": [
     { "id": 1, "name": "Điện thoại" },
     { "id": 2, "name": "Laptop" }
   ],
-  "users": [
-    { "id": 1, "name": "Nguyễn Văn A", "email": "a@gmail.com" },
-    { "id": 2, "name": "Trần Thị B", "email": "b@gmail.com" }
-  ],
   "brands": [
     { "id": 1, "name": "Apple" },
     { "id": 2, "name": "Samsung" }
   ],
+  "users": [
+    { "id": 1, "name": "Nguyễn Văn A", "email": "a@gmail.com" },
+    { "id": 2, "name": "Trần Thị B", "email": "b@gmail.com" }
+  ],
   "orders": [
-    { "id": 1, "user": "Nguyễn Văn A", "total": 1950 },
-    { "id": 2, "user": "Trần Thị B", "total": 1000 }
+    {
+      "id": 1,
+      "user_id": 1,
+      "product_ids": [1, 2],
+      "total": 42000000,
+      "createdAt": "2025-07-20T12:00:00Z"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "product_ids": [3],
+      "total": 28000000,
+      "createdAt": "2025-07-19T08:30:00Z"
+    }
   ]
 }
